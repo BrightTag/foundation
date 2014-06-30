@@ -183,10 +183,8 @@
           parent = direct_parent.parent();
         }
 
-        if (is_radio && required) {
-          validations.push(this.valid_radio(el, required));
-        } else if (is_checkbox && required) {
-          validations.push(this.valid_checkbox(el, required));
+        if ((is_radio || is_checkbox) && required) {
+          validations.push(this.valid_radio_or_checkbox(el, required));
         } else if (validator) {
           valid = this.settings.validators[validator].apply(this, [el, required, parent])
           validations.push(valid);
@@ -222,21 +220,7 @@
 
       return validations;
     },
-
-    valid_checkbox : function(el, required) {
-      var el = this.S(el),
-          valid = (el.is(':checked') || !required);
-
-      if (valid) {
-        el.removeAttr(this.invalid_attr).parent().removeClass('error');
-      } else {
-        el.attr(this.invalid_attr, '').parent().addClass('error');
-      }
-
-      return valid;
-    },
-
-    valid_radio : function (el, required) {
+    valid_radio_or_checkbox : function (el, required) {
       var name = el.getAttribute('name'),
           group = this.S(el).closest('[data-' + this.attr_name(true) + ']').find("[name='"+name+"']"),
           count = group.length,
