@@ -148,11 +148,12 @@
     },
 
     open: function (dropdown, target) {
+
       this
         .css(dropdown
         .addClass(this.settings.active_class), target);
       dropdown.prev('[' + this.attr_name() + ']').addClass(this.settings.active_class);
-      dropdown.data('target', target.get(0)).trigger('opened').trigger('opened.fndtn.dropdown', [dropdown, target]);
+      dropdown.data('target', target.get(0)).trigger('opened', [dropdown, target]).trigger('opened.fndtn.dropdown', [dropdown, target]);
       dropdown.attr('aria-hidden', 'false');
       target.attr('aria-expanded', 'true');
       dropdown.focus();
