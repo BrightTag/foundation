@@ -52,11 +52,24 @@ $switch-active-color: $primary-color !default;
      -moz-user-select: none;
           user-select: none;
 
-  // Default label styles for type and transition
   label {
     display: block;
     margin-bottom: ($switch-height-med / 2);
+
     position: relative;
+    @include clearfix;
+    &:before, & > * {
+      float: left;
+    }
+    & > * {
+      margin: 0 0 0 .5rem;
+    }
+  }
+
+  // Default label styles for type and transition
+  label:before {
+    content: "";
+    display: block;
     color: transparent;
     background: $switch-bg;
     text-indent: 100%;
@@ -65,6 +78,10 @@ $switch-active-color: $primary-color !default;
 
     // Transition for the switch label to follow paddle
     @include single-transition(left, $transition-speed, $transition-ease);
+
+    label + & {
+      margin-bottom: $switch-height-med / 2;
+    }
   }
 
   // So that we don't need to recreate the form with any JS, we use the
@@ -76,7 +93,7 @@ $switch-active-color: $primary-color !default;
     left: 10px;
     padding:0;
 
-    & + label { margin-left: 0; margin-right: 0; }
+    & + label:before { margin-left: 0; margin-right: 0; }
   }
 
   // The paddle for the switch is created from an after psuedoclass
@@ -104,7 +121,7 @@ $switch-active-color: $primary-color !default;
     transform: translate3d(0,0,0);
   }
 
-  input:checked + label {
+  input:checked + label:before {
     background: $switch-active-color;
   }
 
@@ -123,6 +140,9 @@ $switch-active-color: $primary-color !default;
   label {
     width: $height * 2;
     height: $height;
+  }
+  label:before {
+    width: $height * 2; height: $height;
   }
 
   label:after {
@@ -151,7 +171,7 @@ $switch-active-color: $primary-color !default;
 
   @if $base-style {
 
-    label {
+    label:before {
       color: transparent;
       background: $switch-bg;
     }
@@ -160,14 +180,19 @@ $switch-active-color: $primary-color !default;
       background: $paddle-bg;
     }
 
+<<<<<<< HEAD
     input:checked + label {
       background: $active-color;
+=======
+    input:checked + label:before {
+      background: $switch-active-color;
+>>>>>>> Making label content work with switches
     }
   }
 
   // Setting up the radius for switches
   @if $radius == true {
-    label {
+    label:before {
       border-radius: 2rem;
     }
     label:after {
@@ -175,7 +200,7 @@ $switch-active-color: $primary-color !default;
     }
   }
   @else if $radius {
-    label {
+    label:before {
       border-radius: $radius;
     }
     label:after {
@@ -223,13 +248,17 @@ $switch-active-color: $primary-color !default;
 
         // Add a radius to the switch
         &.radius {
+<<<<<<< HEAD
           label { @include radius(4px); }
+=======
+          label:before { @include radius(4px); }
+>>>>>>> Making label content work with switches
           label:after { @include radius(3px); }
         }
 
         // Make the switch completely round, like a pill
         &.round { @include radius(1000px);
-          label { @include radius(2rem); }
+          label:before { @include radius(2rem); }
           label:after { @include radius(2rem); }
         }
 
