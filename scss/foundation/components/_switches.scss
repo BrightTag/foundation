@@ -180,13 +180,11 @@ $switch-active-color: $primary-color !default;
       background: $paddle-bg;
     }
 
-<<<<<<< HEAD
     input:checked + label {
       background: $active-color;
-=======
+    }
     input:checked + label:before {
       background: $switch-active-color;
->>>>>>> Making label content work with switches
     }
   }
 
@@ -248,11 +246,8 @@ $switch-active-color: $primary-color !default;
 
         // Add a radius to the switch
         &.radius {
-<<<<<<< HEAD
           label { @include radius(4px); }
-=======
           label:before { @include radius(4px); }
->>>>>>> Making label content work with switches
           label:after { @include radius(3px); }
         }
 
