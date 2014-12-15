@@ -148,7 +148,6 @@
     },
 
     open: function (dropdown, target) {
-
       this
         .css(dropdown
         .addClass(this.settings.active_class), target);

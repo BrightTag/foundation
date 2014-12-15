@@ -55,7 +55,6 @@ $switch-active-color: $primary-color !default;
   label {
     display: block;
     margin-bottom: ($switch-height-med / 2);
-
     position: relative;
     @include clearfix;
     &:before, & > * {
@@ -183,6 +182,7 @@ $switch-active-color: $primary-color !default;
     input:checked + label {
       background: $active-color;
     }
+
     input:checked + label:before {
       background: $switch-active-color;
     }
@@ -247,6 +247,7 @@ $switch-active-color: $primary-color !default;
         // Add a radius to the switch
         &.radius {
           label { @include radius(4px); }
+
           label:before { @include radius(4px); }
           label:after { @include radius(3px); }
         }
